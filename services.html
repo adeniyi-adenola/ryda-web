@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryda - servicespage</title>
+  <!-- Link Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Navbar -->
+<div class="navbar">
+  <div class="logo">Ryda</div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+  <div class="menu">
+    <div class="nav-menu-li">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="taxi.html">Taxi</a>
+      <a href="services.html">Services</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="icons">
+      <span class="search" onclick="toggleSearch()">
+        <i class="fas fa-search"></i>
+      </span>
+      <span class="profile" onclick="toggleProfile()">
+        <i class="fas fa-user"></i>
+      </span>
+      <div class="btn-orange" onclick="toggleBooking()">Book Now<span class="arrow">→</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Search Modal -->
+<div id="search-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="toggleSearch()">&times;</span>
+    <h3>Search</h3>
+    <input id="search-input" type="text" placeholder="Search for services, taxis, blogs..." onclick="showOptions()" />
+    <div id="search-options" class="search-options" style="display: none;">
+      <p onclick="selectSearchOption('Services')">Services</p>
+      <p onclick="selectSearchOption('Taxis')">Taxis</p>
+      <p onclick="selectSearchOption('Blogs')">Blogs</p>
+      <p onclick="selectSearchOption('Contact')">Contact</p>
+      <p onclick="selectSearchOption('Support')">Support</p>
+    </div>
+    <button onclick="performSearch()">Search</button>
+  </div>
+</div>
+
+
+<!-- Profile Modal -->
+<div id="profile-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="toggleProfile()">&times;</span>
+    <div class="form-toggle">
+      <button id="show-login" class="active" onclick="showLogin()">Log In</button>
+      <button id="show-signup" onclick="showSignUp()">Sign Up</button>
+    </div>
+    <div id="login-form" class="form-content">
+      <h3>Log In</h3>
+      <form>
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+        <button>Log In</button>
+      </form>
+    </div>
+    <div id="signup-form" class="form-content" style="display: none;">
+      <p>Don't have an account?</p>
+      <h3>Sign Up</h3>
+      <form>
+        <input type="text" placeholder="Username" />
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <button>Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Booking Modal -->
+<div id="booking-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="toggleBooking()">&times;</span>
+    <h3>Book a Ride</h3>
+    <form id="booking-form" action="booking-details.html" method="GET">
+      <input type="text" placeholder="Pick up Location" name="pickup" required>
+      <input type="text" placeholder="Drop Off Location" name="dropoff" required>
+      <input type="number" placeholder="Passengers" name="passengers" required>
+      <input type="date" name="date" required>
+      <input type="time" name="time" required>
+      <select name="car_type" required>
+        <option value="">Select Car Type</option>
+        <option value="toyota-corolla">Toyota Corolla</option>
+        <option value="toyota-camry">Toyota Camry</option>
+        <option value="honda-civic">Honda Civic</option>
+        <option value="honda-accord">Honda Accord</option>
+        <option value="nissan-altima">Nissan Altima</option>
+        <option value="nissan-maxima">Nissan Maxima</option>
+        <option value="kia-rio">Kia Rio</option>
+        <option value="kia-sportage">Kia Sportage</option>
+        <option value="hyundai-sonata">Hyundai Sonata</option>
+        <option value="hyundai-elantra">Hyundai Elantra</option>
+        <option value="lexus-rx">Lexus RX</option>
+        <option value="lexus-es">Lexus ES</option>
+        <option value="mazda-cx5">Mazda CX-5</option>
+        <option value="ford-focus">Ford Focus</option>
+        <option value="ford-edge">Ford Edge</option>
+        <option value="mercedes-cclass">Mercedes-Benz C-Class</option>
+        <option value="mercedes-eclass">Mercedes-Benz E-Class</option>
+        <option value="peugeot-508">Peugeot 508</option>
+        <option value="volkswagen-passat">Volkswagen Passat</option>
+        <option value="volkswagen-jetta">Volkswagen Jetta</option>
+      </select>
+    
+    <button type="submit">Book Taxi <span>→</span></button>
+    </form>
+  </div>
+</div>
+<section class="services-section">
+  <!-- Background with Service Text -->
+  <div class="services-header">
+    <h1>Service</h1>
+  </div>
+
+  <!-- Main Services Section -->
+  <div class="services-intro">
+    <h2>Our Best Services For You</h2>
+  </div>
+
+  <!-- Service Cards -->
+  <div class="services-cards">
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-calendar-check"></i> <!-- Example Icon -->
+      </div>
+      <img src="online-booking.jpg" alt="Online Booking">
+      <h3>Online Booking</h3>
+      <p>Are you looking to integrate a taxi booking feature into your system? Learn how easy it is.</p>
+      <button class="btn btn-primary" onclick="toggleServiceContent('serviceContent1')">Read More</button>
+      
+      <!-- Hidden Service Content -->
+      <div id="serviceContent1" class="service-content" style="display: none;">
+        <p>Our online booking system allows you to seamlessly integrate booking options into your website or app. Customers can easily choose their ride and schedule it at their convenience.</p>
+        <button class="btn btn-secondary" onclick="toggleServiceContent('serviceContent1')">Show Less</button>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-city"></i>
+      </div>
+      <img src="city-transport.jpg" alt="City Transport">
+      <h3>City Transport</h3>
+      <p>Are you referring to city transport taxis in general or something specific? We have both.</p>
+      <button class="btn btn-primary" onclick="toggleServiceContent('serviceContent2')">Read More</button>
+      
+      <!-- Hidden Service Content -->
+      <div id="serviceContent2" class="service-content" style="display: none;">
+        <p>We offer city-wide transport options, including taxis, rideshare, and more. Whether you're heading to work or need a ride for a special event, our city transport services are designed for convenience.</p>
+        <button class="btn btn-secondary" onclick="toggleServiceContent('serviceContent2')">Show Less</button>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-plane-departure"></i>
+      </div>
+      <img src="airport-transport.jpg" alt="Airport Transport">
+      <h3>Airport Transport</h3>
+      <p>Need a ride to the airport? Our efficient airport transport services are here to help.</p>
+      <button class="btn btn-primary" onclick="toggleServiceContent('serviceContent3')">Read More</button>
+      
+      <!-- Hidden Service Content -->
+      <div id="serviceContent3" class="service-content" style="display: none;">
+        <p>Our airport transport services ensure that you get to and from the airport on time. We offer private rides, shared rides, and comfortable vehicles for a hassle-free travel experience.</p>
+        <button class="btn btn-secondary" onclick="toggleServiceContent('serviceContent3')">Show Less</button>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-briefcase"></i>
+      </div>
+      <img src="business-transport.jpg" alt="Business Transport">
+      <h3>Business Transport</h3>
+      <p>Our business transport service is tailored for executives and business professionals.</p>
+      <button class="btn btn-primary" onclick="toggleServiceContent('serviceContent4')">Read More</button>
+      
+      <!-- Hidden Service Content -->
+      <div id="serviceContent4" class="service-content" style="display: none;">
+        <p>We provide premium transport services for business executives, ensuring timely arrival and a comfortable ride. Our fleet includes luxury cars and professional drivers.</p>
+        <button class="btn btn-secondary" onclick="toggleServiceContent('serviceContent4')">Show Less</button>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-bus"></i>
+      </div>
+      <img src="regular-transport.jpg" alt="Regular Transport">
+      <h3>Regular Transport</h3>
+      <p>Regular transport services ensure you get to your destinations on time every day.</p>
+      <button class="btn btn-primary" onclick="toggleServiceContent('serviceContent5')">Read More</button>
+      
+      <!-- Hidden Service Content -->
+      <div id="serviceContent5" class="service-content" style="display: none;">
+        <p>We offer reliable and affordable regular transport services, whether it's for commuting or daily errands. Our fleet is punctual and ensures you travel safely.</p>
+        <button class="btn btn-secondary" onclick="toggleServiceContent('serviceContent5')">Show Less</button>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-map-marked-alt"></i>
+      </div>
+      <img src="tour-transport.jpg" alt="Tour Transport">
+      <h3>Tour Transport</h3>
+      <p>Explore the city or countryside with our dedicated tour transport services.</p>
+      <button class="btn btn-primary" onclick="toggleServiceContent('serviceContent6')">Read More</button>
+      
+      <!-- Hidden Service Content -->
+      <div id="serviceContent6" class="service-content" style="display: none;">
+        <p>Our tour transport services offer a comfortable and informative travel experience, whether you're exploring the city or venturing into the countryside.</p>
+        <button class="btn btn-secondary" onclick="toggleServiceContent('serviceContent6')">Show Less</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-request">
+  <h2>Request a Service</h2>
+  <form action="#" method="POST">
+    <label for="service-type">Select Service</label>
+    <select id="service-type" name="service-type">
+      <option value="taxi">Taxi</option>
+      <option value="airport">Airport Transport</option>
+      <option value="business">Business Transport</option>
+      <option value="tour">Tour Transport</option>
+    </select>
+    
+    <label for="pickup-location">Pick-up Location</label>
+    <input type="text" id="pickup-location" name="pickup-location" required>
+    
+    <label for="dropoff-location">Drop-off Location</label>
+    <input type="text" id="dropoff-location" name="dropoff-location" required>
+    
+    <label for="date">Date & Time</label>
+    <input type="datetime-local" id="date" name="date" required>
+    
+    <button type="submit">Request Service</button>
+  </form>
+</section>
+
+<section class="pricing">
+  <h2>Service Pricing</h2>
+  <div class="pricing-cards">
+    <div class="pricing-card">
+      <h3>Basic Ride</h3>
+      <p>Up to 10 km</p>
+      <p class="price">$10</p>
+    </div>
+    <div class="pricing-card">
+      <h3>Premium Ride</h3>
+      <p>Up to 50 km</p>
+      <p class="price">$50</p>
+    </div>
+    <div class="pricing-card">
+      <h3>Luxury Ride</h3>
+      <p>Unlimited Distance</p>
+      <p class="price">$100</p>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="service-booking-process">
+  <h2>How to Book a Ride</h2>
+  <div class="steps">
+    <div class="step">
+      <h3>Step 1: Choose Your Ride</h3>
+      <p>Select the type of ride you need (e.g., taxi, airport transport, business transport).</p>
+    </div>
+    <div class="step">
+      <h3>Step 2: Provide Your Details</h3>
+      <p>Enter your pick-up and drop-off location and the date and time of your ride.</p>
+    </div>
+    <div class="step">
+      <h3>Step 3: Confirm & Pay</h3>
+      <p>Confirm your booking and proceed with payment.</p>
+    </div>
+  </div>
+</section>
+
+<section class="service-features">
+  <h2>Why Choose Our Services?</h2>
+  <div class="feature-cards">
+    <div class="feature-card">
+      <i class="fas fa-cogs"></i>
+      <h3>Reliability</h3>
+      <p>We provide reliable and punctual services, ensuring that your transportation needs are met on time.</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-users"></i>
+      <h3>Professional Drivers</h3>
+      <p>Our experienced drivers ensure a safe and comfortable ride, making your experience pleasant.</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-credit-card"></i>
+      <h3>Convenient Payment</h3>
+      <p>We offer multiple payment methods, including online payments, for your convenience.</p>
+    </div>
+  </div>
+</section>
+
+
+<div class="support-widget">
+  <a href="contact.html">
+    <i class="fas fa-headset"></i> Live Support
+  </a>
+</div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- ryda Section -->
+      <div class="footer-section taxi-sea">
+        <h3>RYDA</h3>
+        <p>We are many variations of passengers available but the majority have suffered alteration in some form by injected humour words inevitable.</p>
+        <p><i class="fas fa-phone-alt"></i> +2349026713072</p>
+        <p><i class="fas fa-map-marker-alt"></i> 25/8 ikeja, lagos, Nigeria/p>
+        <p><i class="fas fa-envelope"></i> Rydaservice@gmail.com</p>
+      </div>
+      
+        <!-- Quick Links Section -->
+        <div class="footer-section quick-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="update-news.html">Update News</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="drivers.html">Our Drivers</a></li>
+          </ul>
+        </div>
+        
+        <!-- Support Center Section -->
+        <div class="footer-section support-center">
+          <h3>Support Center</h3>
+          <ul>
+            <li><a href="faq.html">FAQ's</a></li>
+            <li><a href="affiliates.html">Affiliates</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="book.html">Book a Ride</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="sitemap.html">Sitemap</a></li>
+          </ul>
+        </div>
+      <!-- Newsletter Section -->
+      <div class="footer-section newsletter">
+        <h3>Newsletter</h3>
+        <p>Subscribe to our newsletter to get the latest updates and news.</p>
+        <form>
+          <input type="email" placeholder="Your Email">
+          <button type="submit">Subscribe Now</button>
+        </form>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+      <div class="back-to-top">
+      <a href="#top"><i class="fas fa-arrow-up"></i></a>
+    </div>
+  </footer>
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+

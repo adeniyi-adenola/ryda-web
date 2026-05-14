@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryda - Taxipage</title>
+  <!-- Link Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Navbar -->
+<div class="navbar">
+  <div class="logo">Ryda</div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+  <div class="menu">
+    <div class="nav-menu-li">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="taxi.html">Taxi</a>
+      <a href="services.html">Services</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="icons">
+      <span class="search" onclick="toggleSearch()">
+        <i class="fas fa-search"></i>
+      </span>
+      <span class="profile" onclick="toggleProfile()">
+        <i class="fas fa-user"></i>
+      </span>
+      <div class="btn-orange" onclick="toggleBooking()">Book Now<span class="arrow">→</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Search Modal -->
+<div id="search-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="toggleSearch()">&times;</span>
+    <h3>Search</h3>
+    <input id="search-input" type="text" placeholder="Search for services, taxis, blogs..." onclick="showOptions()" />
+    <div id="search-options" class="search-options" style="display: none;">
+      <p onclick="selectSearchOption('Services')">Services</p>
+      <p onclick="selectSearchOption('Taxis')">Taxis</p>
+      <p onclick="selectSearchOption('Blogs')">Blogs</p>
+      <p onclick="selectSearchOption('Contact')">Contact</p>
+      <p onclick="selectSearchOption('Support')">Support</p>
+    </div>
+    <button onclick="performSearch()">Search</button>
+  </div>
+</div>
+
+
+<!-- Profile Modal -->
+<div id="profile-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="toggleProfile()">&times;</span>
+    <div class="form-toggle">
+      <button id="show-login" class="active" onclick="showLogin()">Log In</button>
+      <button id="show-signup" onclick="showSignUp()">Sign Up</button>
+    </div>
+    <div id="login-form" class="form-content">
+      <h3>Log In</h3>
+      <form>
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+        <button>Log In</button>
+      </form>
+    </div>
+    <div id="signup-form" class="form-content" style="display: none;">
+      <p>Don't have an account?</p>
+      <h3>Sign Up</h3>
+      <form>
+        <input type="text" placeholder="Username" />
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <button>Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Booking Modal -->
+<div id="booking-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="toggleBooking()">&times;</span>
+    <h3>Book a Ride</h3>
+    <form id="booking-form" action="booking-details.html" method="GET">
+      <input type="text" placeholder="Pick up Location" name="pickup" required>
+      <input type="text" placeholder="Drop Off Location" name="dropoff" required>
+      <input type="number" placeholder="Passengers" name="passengers" required>
+      <input type="date" name="date" required>
+      <input type="time" name="time" required>
+      <select name="car_type" required>
+        <option value="">Select Car Type</option>
+        <option value="toyota-corolla">Toyota Corolla</option>
+        <option value="toyota-camry">Toyota Camry</option>
+        <option value="honda-civic">Honda Civic</option>
+        <option value="honda-accord">Honda Accord</option>
+        <option value="nissan-altima">Nissan Altima</option>
+        <option value="nissan-maxima">Nissan Maxima</option>
+        <option value="kia-rio">Kia Rio</option>
+        <option value="kia-sportage">Kia Sportage</option>
+        <option value="hyundai-sonata">Hyundai Sonata</option>
+        <option value="hyundai-elantra">Hyundai Elantra</option>
+        <option value="lexus-rx">Lexus RX</option>
+        <option value="lexus-es">Lexus ES</option>
+        <option value="mazda-cx5">Mazda CX-5</option>
+        <option value="ford-focus">Ford Focus</option>
+        <option value="ford-edge">Ford Edge</option>
+        <option value="mercedes-cclass">Mercedes-Benz C-Class</option>
+        <option value="mercedes-eclass">Mercedes-Benz E-Class</option>
+        <option value="peugeot-508">Peugeot 508</option>
+        <option value="volkswagen-passat">Volkswagen Passat</option>
+        <option value="volkswagen-jetta">Volkswagen Jetta</option>
+      </select>
+    
+    <button type="submit">Book Taxi <span>→</span></button>
+    </form>
+  </div>
+</div>
+
+<section id="ride-categories-intro" class="ride-categories-intro">
+  <div class="intro-container">
+    <div class="intro-text">
+      <h1>Explore Our taxi Ride <br><span>Options.</span></h1>
+      <p>
+        We offer a wide range of vehicles to suit your needs, whether you're looking for a luxurious ride,
+         a family-friendly car, or a budget-friendly option. Discover the perfect ride for any occasion.
+      </p>
+      <a href="#taxi-cards" class="btn-primary">Explore Cars</a>
+    </div>
+    <div class="intro-image">
+      <img src="images/colour_marutisuzuki-fronx_earthen-brown_600x400-removebg-preview.png" alt="Car Image">
+    </div>
+  </div>
+</section>
+
+
+<section id="taxi-cards" class="taxi-cards">
+  <h2 class="section-title">Our Ride Categories</h2>
+  <div class="cards-container">
+    <!-- Card 1 -->
+    <div class="card">
+      <img src="images/taxi1.jpg" alt="Taxi 1">
+      <h3>Economy Ride</h3>
+      <p>Affordable and comfortable rides for everyday use.</p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <img src="images/taxi2.jpg" alt="Taxi 2">
+      <h3>Premium Ride</h3>
+      <p>Stylish cars for a luxurious and premium experience.</p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <img src="images/Microbus.jpg" alt="Taxi 3">
+      <h3>Family Ride</h3>
+      <p>Spacious cars for family trips and group travels.</p>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card">
+      <img src="images/taxi.jpg" alt="Taxi 4">
+      <h3>Executive Ride</h3>
+      <p>High-class vehicles for business and executive travel.</p>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card">
+      <img src="images/Electric.jpg" alt="Taxi 5">
+      <h3>Green Ride</h3>
+      <p>Eco-friendly rides with hybrid or electric cars.</p>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card">
+      <img src="taxi6.png" alt="Taxi 6">
+      <h3>Fast Ride</h3>
+      <p>Quick rides for fast and efficient transportation.</p>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="card">
+      <img src="taxi7.png" alt="Taxi 7">
+      <h3>Luxury Ride</h3>
+      <p>Ultimate luxury for special occasions and events.</p>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="card">
+      <img src="images/sedan.jpg" alt="Taxi 8">
+      <h3>Bike Ride</h3>
+      <p>Quick, convenient, and cost-effective bike rides.</p>
+    </div>
+
+    <!-- Card 9 -->
+    <div class="card">
+      <img src="taxi9.png" alt="Taxi 9">
+      <h3>Van Ride</h3>
+      <p>Large vehicles for transporting bigger groups.</p>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- ryda Section -->
+      <div class="footer-section taxi-sea">
+        <h3>RYDA</h3>
+        <p>We are many variations of passengers available but the majority have suffered alteration in some form by injected humour words inevitable.</p>
+        <p><i class="fas fa-phone-alt"></i> +2349026713072</p>
+        <p><i class="fas fa-map-marker-alt"></i> 25/8 ikeja, lagos, Nigeria/p>
+        <p><i class="fas fa-envelope"></i> Rydaservice@gmail.com</p>
+      </div>
+      
+       <!-- Quick Links Section -->
+       <div class="footer-section quick-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="update-news.html">Update News</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="drivers.html">Our Drivers</a></li>
+        </ul>
+      </div>
+      
+      <!-- Support Center Section -->
+      <div class="footer-section support-center">
+        <h3>Support Center</h3>
+        <ul>
+          <li><a href="faq.html">FAQ's</a></li>
+          <li><a href="affiliates.html">Affiliates</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="book.html">Book a Ride</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="sitemap.html">Sitemap</a></li>
+        </ul>
+      </div>
+      
+      <!-- Newsletter Section -->
+      <div class="footer-section newsletter">
+        <h3>Newsletter</h3>
+        <p>Subscribe to our newsletter to get the latest updates and news.</p>
+        <form>
+          <input type="email" placeholder="Your Email">
+          <button type="submit">Subscribe Now</button>
+        </form>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+      <div class="back-to-top">
+      <a href="#top"><i class="fas fa-arrow-up"></i></a>
+    </div>
+  </footer>
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryda - Blogpage</title>
+  <!-- Link Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Navbar -->
+<div class="navbar">
+  <div class="logo">Ryda</div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+  <div class="menu">
+    <div class="nav-menu-li">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="taxi.html">Taxi</a>
+      <a href="services.html">Services</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="icons">
+      <span class="search" onclick="toggleSearch()">
+        <i class="fas fa-search"></i>
+      </span>
+      <span class="profile" onclick="toggleProfile()">
+        <i class="fas fa-user"></i>
+      </span>
+      <div class="btn-orange" onclick="toggleBooking()">Book Now<span class="arrow">→</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Search Modal -->
+<div id="search-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="toggleSearch()">&times;</span>
+    <h3>Search</h3>
+    <input id="search-input" type="text" placeholder="Search for services, taxis, blogs..." onclick="showOptions()" />
+    <div id="search-options" class="search-options" style="display: none;">
+      <p onclick="selectSearchOption('Services')">Services</p>
+      <p onclick="selectSearchOption('Taxis')">Taxis</p>
+      <p onclick="selectSearchOption('Blogs')">Blogs</p>
+      <p onclick="selectSearchOption('Contact')">Contact</p>
+      <p onclick="selectSearchOption('Support')">Support</p>
+    </div>
+    <button onclick="performSearch()">Search</button>
+  </div>
+</div>
+
+
+<!-- Profile Modal -->
+<div id="profile-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="toggleProfile()">&times;</span>
+    <div class="form-toggle">
+      <button id="show-login" class="active" onclick="showLogin()">Log In</button>
+      <button id="show-signup" onclick="showSignUp()">Sign Up</button>
+    </div>
+    <div id="login-form" class="form-content">
+      <h3>Log In</h3>
+      <form>
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+        <button>Log In</button>
+      </form>
+    </div>
+    <div id="signup-form" class="form-content" style="display: none;">
+      <p>Don't have an account?</p>
+      <h3>Sign Up</h3>
+      <form>
+        <input type="text" placeholder="Username" />
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <button>Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Booking Modal -->
+<div id="booking-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="toggleBooking()">&times;</span>
+    <h3>Book a Ride</h3>
+    <form id="booking-form" action="booking-details.html" method="GET">
+      <input type="text" placeholder="Pick up Location" name="pickup" required>
+      <input type="text" placeholder="Drop Off Location" name="dropoff" required>
+      <input type="number" placeholder="Passengers" name="passengers" required>
+      <input type="date" name="date" required>
+      <input type="time" name="time" required>
+      <select name="car_type" required>
+        <option value="">Select Car Type</option>
+        <option value="toyota-corolla">Toyota Corolla</option>
+        <option value="toyota-camry">Toyota Camry</option>
+        <option value="honda-civic">Honda Civic</option>
+        <option value="honda-accord">Honda Accord</option>
+        <option value="nissan-altima">Nissan Altima</option>
+        <option value="nissan-maxima">Nissan Maxima</option>
+        <option value="kia-rio">Kia Rio</option>
+        <option value="kia-sportage">Kia Sportage</option>
+        <option value="hyundai-sonata">Hyundai Sonata</option>
+        <option value="hyundai-elantra">Hyundai Elantra</option>
+        <option value="lexus-rx">Lexus RX</option>
+        <option value="lexus-es">Lexus ES</option>
+        <option value="mazda-cx5">Mazda CX-5</option>
+        <option value="ford-focus">Ford Focus</option>
+        <option value="ford-edge">Ford Edge</option>
+        <option value="mercedes-cclass">Mercedes-Benz C-Class</option>
+        <option value="mercedes-eclass">Mercedes-Benz E-Class</option>
+        <option value="peugeot-508">Peugeot 508</option>
+        <option value="volkswagen-passat">Volkswagen Passat</option>
+        <option value="volkswagen-jetta">Volkswagen Jetta</option>
+      </select>
+    
+    <button type="submit">Book Taxi <span>→</span></button>
+    </form>
+  </div>
+</div>
+
+<section class="blog-page">
+    <div class="container">
+      <!-- Main Blog Content -->
+      <div class="blog-content">
+        <h1 class="section-title">Latest Blog Posts</h1>
+        <div class="blog-posts">
+      <!-- Blog Post 1 -->
+      <article class="blog-post">
+        <img src="images/blog imge 1.jpg" alt="Blog Image" class="blog-img">
+        <div class="blog-details">
+          <h2 class="blog-title">The Future of Urban Mobility</h2>
+          <p class="blog-date">Published on: July 10, 2024</p>
+          <p class="blog-author">By: John Doe</p>
+          <p class="blog-content">
+     This blog explores the future of urban mobility, looking at trends such as electric vehicles, self-driving cars, and AI-driven solutions. We will delve into the innovations that are set to define the way we move around cities in the coming decades.
+            <br><br>
+           </p>
+        </div>
+      </article>
+
+      <!-- Blog Post 2 -->
+      <article class="blog-post">
+        <img src="images/blog image 2.jpg" alt="Blog Image" class="blog-img">
+        <div class="blog-details">
+          <h2 class="blog-title">5 Tips for Booking Taxis</h2>
+          <p class="blog-date">Published on: July 15, 2024</p>
+          <p class="blog-author">By: Sarah White</p>
+          <p class="blog-content">
+            When booking a taxi, consider the following tips to ensure a safe and efficient experience:
+          </p>
+          <ul>
+            <li>Choose a reputable taxi service with positive customer reviews.</li>
+            <li>Verify the driver and vehicle details before starting the trip.</li>
+            <li>Always confirm the fare estimate before your journey begins.</li>
+            <li>Share your ride details with a trusted friend or family member.</li>
+            <li>Avoid hailing taxis in unsafe or poorly lit areas at night.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+  
+      <!-- Sidebar -->
+      <aside class="blog-sidebar">
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">Categories</h3>
+          <ul class="sidebar-list">
+            <li><a href="#">Urban Mobility</a></li>
+            <li><a href="#">Taxi Tips</a></li>
+            <li><a href="#">Tech Innovations</a></li>
+            <li><a href="#">Travel Safety</a></li>
+          </ul>
+        </div>
+  
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">Recent Posts</h3>
+          <ul class="recent-posts">
+            <li><a href="blog-post3.html">How to Choose the Right Taxi Service</a></li>
+            <li><a href="blog-post4.html">Electric Taxis: The Eco-Friendly Future</a></li>
+            <li><a href="blog-post5.html">10 Destinations to Explore with Ryda</a></li>
+          </ul>
+        </div>
+  
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">Follow Us</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+  
+
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- ryda Section -->
+      <div class="footer-section taxi-sea">
+        <h3>RYDA</h3>
+        <p>We are many variations of passengers available but the majority have suffered alteration in some form by injected humour words inevitable.</p>
+        <p><i class="fas fa-phone-alt"></i> +2349026713072</p>
+        <p><i class="fas fa-map-marker-alt"></i> 25/8 ikeja, lagos, Nigeria/p>
+        <p><i class="fas fa-envelope"></i> Rydaservice@gmail.com</p>
+      </div>
+      
+    <!-- Quick Links Section -->
+    <div class="footer-section quick-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="update-news.html">Update News</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="drivers.html">Our Drivers</a></li>
+      </ul>
+    </div>
+    
+    <!-- Support Center Section -->
+    <div class="footer-section support-center">
+      <h3>Support Center</h3>
+      <ul>
+        <li><a href="faq.html">FAQ's</a></li>
+        <li><a href="affiliates.html">Affiliates</a></li>
+        <li><a href="booking.html">Booking</a></li>
+        <li><a href="book.html">Book a Ride</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="sitemap.html">Sitemap</a></li>
+      </ul>
+    </div>
+      
+      <!-- Newsletter Section -->
+      <div class="footer-section newsletter">
+        <h3>Newsletter</h3>
+        <p>Subscribe to our newsletter to get the latest updates and news.</p>
+        <form>
+          <input type="email" placeholder="Your Email">
+          <button type="submit">Subscribe Now</button>
+        </form>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+      <div class="back-to-top">
+      <a href="#top"><i class="fas fa-arrow-up"></i></a>
+    </div>
+  </footer>
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryda - Aboutpage</title>
+  <!-- Link Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Navbar -->
+<div class="navbar">
+  <div class="logo">Ryda</div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+  <div class="menu">
+    <div class="nav-menu-li">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="taxi.html">Taxi</a>
+      <a href="services.html">Services</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="icons">
+      <span class="search" onclick="toggleSearch()">
+        <i class="fas fa-search"></i>
+      </span>
+      <span class="profile" onclick="toggleProfile()">
+        <i class="fas fa-user"></i>
+      </span>
+      <div class="btn-orange" onclick="toggleBooking()">Book Now<span class="arrow">→</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Search Modal -->
+<div id="search-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="toggleSearch()">&times;</span>
+    <h3>Search</h3>
+    <input id="search-input" type="text" placeholder="Search for services, taxis, blogs..." onclick="showOptions()" />
+    <div id="search-options" class="search-options" style="display: none;">
+      <p onclick="selectSearchOption('Services')">Services</p>
+      <p onclick="selectSearchOption('Taxis')">Taxis</p>
+      <p onclick="selectSearchOption('Blogs')">Blogs</p>
+      <p onclick="selectSearchOption('Contact')">Contact</p>
+      <p onclick="selectSearchOption('Support')">Support</p>
+    </div>
+    <button onclick="performSearch()">Search</button>
+  </div>
+</div>
+
+
+<!-- Profile Modal -->
+<div id="profile-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="toggleProfile()">&times;</span>
+    <div class="form-toggle">
+      <button id="show-login" class="active" onclick="showLogin()">Log In</button>
+      <button id="show-signup" onclick="showSignUp()">Sign Up</button>
+    </div>
+    <div id="login-form" class="form-content">
+      <h3>Log In</h3>
+      <form>
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+        <button>Log In</button>
+      </form>
+    </div>
+    <div id="signup-form" class="form-content" style="display: none;">
+      <p>Don't have an account?</p>
+      <h3>Sign Up</h3>
+      <form>
+        <input type="text" placeholder="Username" />
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <button>Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Booking Modal -->
+<div id="booking-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="toggleBooking()">&times;</span>
+    <h3>Book a Ride</h3>
+    <form id="booking-form" action="booking-details.html" method="GET">
+      <input type="text" placeholder="Pick up Location" name="pickup" required>
+      <input type="text" placeholder="Drop Off Location" name="dropoff" required>
+      <input type="number" placeholder="Passengers" name="passengers" required>
+      <input type="date" name="date" required>
+      <input type="time" name="time" required>
+      <select name="car_type" required>
+        <option value="">Select Car Type</option>
+        <option value="toyota-corolla">Toyota Corolla</option>
+        <option value="toyota-camry">Toyota Camry</option>
+        <option value="honda-civic">Honda Civic</option>
+        <option value="honda-accord">Honda Accord</option>
+        <option value="nissan-altima">Nissan Altima</option>
+        <option value="nissan-maxima">Nissan Maxima</option>
+        <option value="kia-rio">Kia Rio</option>
+        <option value="kia-sportage">Kia Sportage</option>
+        <option value="hyundai-sonata">Hyundai Sonata</option>
+        <option value="hyundai-elantra">Hyundai Elantra</option>
+        <option value="lexus-rx">Lexus RX</option>
+        <option value="lexus-es">Lexus ES</option>
+        <option value="mazda-cx5">Mazda CX-5</option>
+        <option value="ford-focus">Ford Focus</option>
+        <option value="ford-edge">Ford Edge</option>
+        <option value="mercedes-cclass">Mercedes-Benz C-Class</option>
+        <option value="mercedes-eclass">Mercedes-Benz E-Class</option>
+        <option value="peugeot-508">Peugeot 508</option>
+        <option value="volkswagen-passat">Volkswagen Passat</option>
+        <option value="volkswagen-jetta">Volkswagen Jetta</option>
+      </select>
+    
+    <button type="submit">Book Taxi <span>→</span></button>
+    </form>
+  </div>
+</div>
+
+<!-- About Us Section -->
+<section id="about-us" class="about-us">
+    <div class="about-container">
+      <div class="about-text">
+        <h2>About Ryda</h2>
+        <p>At Ryda, we are passionate about providing fast, reliable, and safe transportation for everyone. Whether you're heading to a business meeting or enjoying a night out, Ryda ensures that you get to your destination comfortably and on time. Our drivers are highly trained, and our fleet is always ready to take you wherever you need to go. We are dedicated to offering exceptional service at competitive prices.</p>
+        <p>Our mission is to revolutionize urban transportation by using innovative technology, ensuring a seamless experience for all our passengers. With Ryda, you can enjoy a stress-free ride, every time.</p>
+      </div>
+      <div class="about-image">
+        <img src="images/about_ryda__image-removebg-preview.png" alt="Ryda car service" />
+      </div>
+    </div>
+  </section>
+  
+
+<!-- Our Mission Section -->
+<section id="mission" class="mission">
+    <div class="mission-container">
+      <div class="mission-text">
+        <h2>Our Mission</h2>
+        <p>Our mission is simple: to provide the most reliable, comfortable, and affordable transportation to our passengers. We aim to make every ride an experience, providing unmatched customer service while using the latest technology to ensure safety and convenience.</p>
+        <ul>
+          <li>Innovative Ride-Hailing Service</li>
+          <li>Commitment to Passenger Comfort</li>
+          <li>Safety and Reliability First</li>
+          <li>Expanding Our Fleet to Meet Growing Demand</li>
+        </ul>
+      </div>
+      <div class="mission-image">
+        <img src="images/our mission image.png" alt="Mission" />
+      </div>
+    </div>
+  </section>
+
+
+<!-- Our Team Section -->
+<section id="team" class="team">
+    <h2>Meet Our Team</h2>
+    <div class="team-container">
+      <div class="team-member">
+        <img src="https://via.placeholder.com/150" alt="Team Member" />
+        <h3>ummu yassir</h3>
+        <p>CEO & Founder</p>
+        <p>ummu yassir is the visionary behind Ryda. With over 15 years of experience in the transportation industry, he is passionate about creating solutions that benefit both passengers and drivers.</p>
+      </div>
+      <div class="team-member">
+        <img src="https://via.placeholder.com/150" alt="Team Member" />
+        <h3>Adenola Abdulkhaliq</h3>
+        <p>Chief Technology Officer</p>
+        <p>Adenola leads our tech development team and is responsible for creating the seamless, user-friendly app experience that Ryda passengers love.</p>
+      </div>
+      <div class="team-member">
+        <img src="https://via.placeholder.com/150" alt="Team Member" />
+        <h3>Gazali</h3>
+        <p>Head of Operations</p>
+        <p>Gazali oversees our daily operations, ensuring that everything runs smoothly from ride scheduling to driver coordination.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonial-container">
+      <div class="testimonial">
+        <p>"Ryda has changed my daily commute for the better! The app is easy to use, and I always get a ride within minutes." - Sarah Williams</p>
+      </div>
+      <div class="testimonial">
+        <p>"I love that Ryda drivers are always so friendly and professional. I feel safe and comfortable during every ride." - Michael Brown</p>
+      </div>
+      <div class="testimonial">
+        <p>"I recommend Ryda to everyone I know. It's a great service at an affordable price!" - Jessica Taylor</p>
+      </div>
+    </div>
+  </section>
+  
+<!-- Vision Section -->
+<section id="vision" class="vision">
+  <h2>Our Vision</h2>
+  <p>We envision a world where transportation is safe, accessible, and efficient for everyone. Ryda is committed to expanding its reach, serving new cities, and making travel easier for individuals across the globe.</p>
+  <div class="vision-gallery">
+    <img src="images/Modern Eco-friendly Vehicle.jpeg" alt="Modern Eco-friendly Vehicle" />
+    <img src="images/Cityscape with Smart Transportation.jpeg" alt="Cityscape with Smart Transportation" />
+    <img src="images/our vision image 1.jpg" alt="Happy People Using Ride-Sharing" />
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- ryda Section -->
+      <div class="footer-section taxi-sea">
+        <h3>RYDA</h3>
+        <p>We are many variations of passengers available but the majority have suffered alteration in some form by injected humour words inevitable.</p>
+        <p><i class="fas fa-phone-alt"></i> +2349026713072</p>
+        <p><i class="fas fa-map-marker-alt"></i> 25/8 ikeja, lagos, Nigeria/p>
+        <p><i class="fas fa-envelope"></i> Rydaservice@gmail.com</p>
+      </div>
+      
+      <!-- Quick Links Section -->
+      <div class="footer-section quick-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="update-news.html">Update News</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="drivers.html">Our Drivers</a></li>
+        </ul>
+      </div>
+      
+      <!-- Support Center Section -->
+      <div class="footer-section support-center">
+        <h3>Support Center</h3>
+        <ul>
+          <li><a href="faq.html">FAQ's</a></li>
+          <li><a href="affiliates.html">Affiliates</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="book.html">Book a Ride</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="sitemap.html">Sitemap</a></li>
+        </ul>
+      </div>
+      
+      <!-- Newsletter Section -->
+      <div class="footer-section newsletter">
+        <h3>Newsletter</h3>
+        <p>Subscribe to our newsletter to get the latest updates and news.</p>
+        <form>
+          <input type="email" placeholder="Your Email">
+          <button type="submit">Subscribe Now</button>
+        </form>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+      <div class="back-to-top">
+      <a href="#top"><i class="fas fa-arrow-up"></i></a>
+    </div>
+  </footer>
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
